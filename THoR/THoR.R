@@ -65,27 +65,21 @@ teamthor$TeamInd[teamthor$Team == 'PITTSBURGH PENGUINS'] = 'PITTSBURGH PENGUINS'
 teamthor$TeamInd[teamthor$Team == 'TORONTO MAPLE LEAFS'] = 'TORONTO MAPLE LEAFS'
 teamthor$TeamInd[teamthor$Team == 'BUFFALO SABRES'] = 'BUFFALO SABRES'
 
+
 # Specific team rankings
-ggplot(teamthor, aes(y=WAR,x=PosRank)) + 
+ggplot(teamthor, aes(y=reorder(Team, WAR),x=WAR)) + 
   geom_point(aes(size=1.5,colour=TeamInd)) + 
   facet_wrap(~Position, ncol = 2) +
   ggtitle('WAR by position') +
-  scale_colour_brewer(palette = "Set1") +
-  xlim(c(32,0))+
-  theme(plot.title = element_text(face="bold", size=30, vjust = 2)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18)) +
-  theme(axis.text.y = element_text(size = 16))
+  scale_colour_brewer(palette = "Set1") 
+
 
 # Conference rankings
-ggplot(teamthor, aes(y=WAR,x=PosRank)) + 
+ggplot(teamthor, aes(y=reorder(Team, WAR),x=WAR)) + 
   geom_point(aes(size=1.5,colour=Division)) + 
   facet_wrap(~Position, ncol = 2) +
   ggtitle('THoR by position') +
-  scale_colour_brewer(palette = "Set1") +
-  xlim(c(32,0))+
-  theme(plot.title = element_text(face="bold", size=30, vjust = 2)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 18)) +
-  theme(axis.text.y = element_text(size = 16))
+  scale_colour_brewer(palette = "Set1") 
 
 # Atlantic Conference
 ggplot(teamthor, aes(y=WAR,x=PosRank)) + 
